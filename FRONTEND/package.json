@@ -1,0 +1,21 @@
+{
+  "name": "personalized-learning-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Personalized Learning System",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx http-server pages -p 3000 -c-1 --cors",
+    "start": "npx http-server pages -p 3000 -c-1 --cors"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "keywords": [
+    "learning",
+    "frontend",
+    "javascript"
+  ],
+  "author": "",
+  "license": "ISC"
+}
