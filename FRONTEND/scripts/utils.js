@@ -26,7 +26,7 @@ export function scrollToTop() {
 export function appendList(parentId, items) {
   const ul = document.getElementById(parentId);
   ul.innerHTML = ""; // Clear old items
-  
+
   items.forEach(item => {
     const li = document.createElement("li");
     li.textContent = item;

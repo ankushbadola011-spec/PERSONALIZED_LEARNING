@@ -14,6 +14,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+          
 @app.get("/")
 def home():
     return {"message": "Personalized Learning System Backend Running"}

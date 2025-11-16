@@ -1,4 +1,3 @@
-
 import { save } from "./utils.js";
 
 let timeLeft = 30;
@@ -10,6 +9,9 @@ const timer = setInterval(() => {
   }
 }, 1000);
 
+// Dynamic API base for Codespace compatibility
+const API_BASE = `${window.location.protocol}//${window.location.hostname}:8000`;
+
 document.getElementById("quiz-form").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -18,7 +20,7 @@ document.getElementById("quiz-form").addEventListener("submit", function (e) {
     { question: "q2", answer: "Paris", user_answer: this.q2.value }
   ];
 
-  fetch("http://127.0.0.1:8000/api/quiz", {
+  fetch(`${API_BASE}/api/quiz`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ items: answers })
@@ -33,7 +35,9 @@ document.getElementById("quiz-form").addEventListener("submit", function (e) {
       user.history.push(data.score);
       user.progress = Math.min(100, user.progress + 20);
       localStorage.setItem("user", JSON.stringify(user));
-      save("user", user);
     })
-    .catch(err => console.error("Error submitting quiz:", err));
+    .catch(err => {
+      console.error("Error submitting quiz:", err);
+      document.getElementById("result").textContent = "Error submitting quiz. Please try again.";
+    });
 });
